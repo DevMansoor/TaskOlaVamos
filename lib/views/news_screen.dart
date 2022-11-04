@@ -5,16 +5,17 @@ import '../widget/news_container.dart';
 import '../widget/rounded_container.dart';
 
 class NewsScreen extends StatefulWidget {
-   String? country1, country2;
+  String? country1, country2;
 
-   NewsScreen({Key? key, this.country1, this.country2}) : super(key: key);
+  NewsScreen({Key? key, this.country1, this.country2}) : super(key: key);
 
   @override
   State<NewsScreen> createState() => _NewsScreenState();
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-  NewsController newsController=Get.put(NewsController());
+  NewsController newsController = Get.put(NewsController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,15 +49,15 @@ class _NewsScreenState extends State<NewsScreen> {
                           ),
                         ),
                       ),
-                      onChanged: (newValue){
+                      onChanged: (newValue) {
                         setState(() {
-                          widget.country1=newValue;
+                          widget.country1 = newValue;
                         });
                       },
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){},
+                    onTap: () {},
                     child: const RoundedContainer(
                       icon: Icons.search,
                     ),
@@ -95,13 +96,15 @@ class _NewsScreenState extends State<NewsScreen> {
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
-              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsContainer(child: ListView.builder(itemBuilder: (context,index){
-                return Column(
-                  children: [
-                    Image.network("")
-                  ],
-                );
-              }),)),
+              Obx(() => newsController.isLoading.value
+                  ? const CircularProgressIndicator()
+                  : NewsContainer(
+                      child: ListView.builder(itemBuilder: (context, index) {
+                        return Column(
+                          children: [Image.network("")],
+                        );
+                      }),
+                    )),
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
