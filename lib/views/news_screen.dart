@@ -95,7 +95,7 @@ class _NewsScreenState extends State<NewsScreen> {
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
-              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsScreen())
+              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsScreen()),
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
