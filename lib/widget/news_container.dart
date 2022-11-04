@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NewsContainer extends StatelessWidget {
-  const NewsContainer({Key? key}) : super(key: key);
+  final Widget? child;
+  const NewsContainer({Key? key,this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,7 @@ class NewsContainer extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.0)
       ),
+      child: child,
     );
   }
 }

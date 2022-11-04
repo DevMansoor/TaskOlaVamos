@@ -95,7 +95,13 @@ class _NewsScreenState extends State<NewsScreen> {
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
-              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsScreen()),
+              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsContainer(child: ListView.builder(itemBuilder: (context,index){
+                return Column(
+                  children: [
+                    Image.network("")
+                  ],
+                );
+              }),)),
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
