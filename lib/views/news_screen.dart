@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import '../controller/news_controller.dart';
 import '../widget/news_container.dart';
 import '../widget/rounded_container.dart';
 
 class NewsScreen extends StatefulWidget {
-  final String? country1, country2;
+   String? country1, country2;
 
-  const NewsScreen({Key? key, this.country1, this.country2}) : super(key: key);
+   NewsScreen({Key? key, this.country1, this.country2}) : super(key: key);
 
   @override
   State<NewsScreen> createState() => _NewsScreenState();
 }
 
 class _NewsScreenState extends State<NewsScreen> {
+  NewsController newsController=Get.put(NewsController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +48,18 @@ class _NewsScreenState extends State<NewsScreen> {
                           ),
                         ),
                       ),
+                      onChanged: (newValue){
+                        setState(() {
+                          widget.country1=newValue;
+                        });
+                      },
                     ),
                   ),
-                  const RoundedContainer(
-                    icon: Icons.search,
+                  GestureDetector(
+                    onTap: (){},
+                    child: const RoundedContainer(
+                      icon: Icons.search,
+                    ),
                   )
                 ],
               ),
@@ -85,7 +95,7 @@ class _NewsScreenState extends State<NewsScreen> {
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
-              const NewsContainer(),
+              Obx(() => newsController.isLoading.value?CircularProgressIndicator():NewsScreen())
               const SizedBox(height: 20),
               const Divider(color: Colors.grey),
               const SizedBox(height: 20),
